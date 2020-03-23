@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 717760228}
   - component: {fileID: 717760227}
   m_Layer: 5
-  m_Name: Challenges
+  m_Name: Usefull stuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1014,7 +1014,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Challenges
+  m_Text: Usefull stuff
 --- !u!222 &812013938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1602,7 +1602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9060c6b6d81d05b46988232e3b888c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Challenges
+  SceneName: UsefullStuff
 --- !u!1 &1547797483
 GameObject:
   m_ObjectHideFlags: 0
