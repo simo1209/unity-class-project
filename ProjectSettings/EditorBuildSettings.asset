@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Settings.unity
     guid: aec2fd97417d688438d01e680821e9fd
   - enabled: 1
-    path: Assets/Scenes/UsefullStuff.unity
+    path: "Assets/Scenes/Barman\u2019s Cook Book.unity"
     guid: a1d96b056440fe0418be74b208fbbf57
+  - enabled: 1
+    path: Assets/Scenes/UsefullStuff.unity
+    guid: 96eb99119b2d0b54480f30842705f45a
   m_configObjects: {}

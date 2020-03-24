@@ -216,8 +216,8 @@ GameObject:
   - component: {fileID: 167427212}
   - component: {fileID: 167427211}
   m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
+  m_Name: Prefab
+  m_TagString: Recipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,12 +242,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 80
-    m_Alignment: 1
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -278,7 +278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 187.71515, y: 386.93933}
+  m_AnchoredPosition: {x: 360, y: 640}
   m_SizeDelta: {x: 300, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &472726693 stripped
@@ -627,7 +627,7 @@ PrefabInstance:
     - target: {fileID: 7889388659325493033, guid: d45bb1fbf1f14954b826be1d17c1a041,
         type: 3}
       propertyPath: m_Name
-      value: Button
+      value: Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 7889388659325493033, guid: d45bb1fbf1f14954b826be1d17c1a041,
         type: 3}
