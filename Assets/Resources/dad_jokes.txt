@@ -1,6 +1,0 @@
-Dad, I'm hungry !;Hello Hungry, I'm dad.
-Dad, I'm hungry 1!;Hello Hungry, I'm dad.
-Dad, I'm hungry 2!;Hello Hungry, I'm dad.
-Dad, I'm hungry 3!;Hello Hungry, I'm dad.
-Dad, I'm hungry 4!;Hello Hungry, I'm dad.
-Dad, I'm hungry 5!;Hello Hungry, I'm dad.
