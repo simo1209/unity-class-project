@@ -13,6 +13,7 @@ app.config['MYSQL_USER'] = 'BrewmasterApi'
 app.config['MYSQL_PASSWORD'] = 'wearenotprepared123'
 app.config['MYSQL_DB'] = 'brewmastersdata'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['IMAGES'] = 'images\\'
 
 mysql = MySQL(app)
 
@@ -47,7 +48,7 @@ def get_joke():
 @app.route("/game_images/<image_name>")
 def get_image(image_name):
     try:
-        return send_from_directory(directory='..\\images\\', filename=image_name, as_attachment=False)
+        return send_from_directory(app.config['IMAGES'], filename=image_name, as_attachment=False)
     except FileNotFoundError:
         abort(404)
 
