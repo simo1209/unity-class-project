@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 
@@ -10,6 +11,7 @@ public class HeadsUp : MonoBehaviour
     public Camera cam;
     public Text word;
     public Text timer;
+    public Image GuessImage;
     private int score;
     private Gyroscope gyro;
     private bool loadWord = false;
@@ -43,6 +45,8 @@ public class HeadsUp : MonoBehaviour
         enabled = true;
         loadWord = true;
         LoadWord();
+        StartCoroutine(setImage("https://picsum.photos/200"));
+
     }
 
     IEnumerator Timer(int seconds)
@@ -91,6 +95,14 @@ public class HeadsUp : MonoBehaviour
         word.text = w;
     }
 
+    IEnumerator setImage(string url)
+    {
+        WWW www = new WWW(url);
+        yield return www;
+        GuessImage.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
+
+    }
+
     IEnumerator ReloadWord()
     {
         
@@ -98,6 +110,7 @@ public class HeadsUp : MonoBehaviour
         cam.backgroundColor = Color.white;
         loadWord = true;
         LoadWord();
+        StartCoroutine(setImage("https://picsum.photos/200"));
     }
 
     // Update is called once per frame
