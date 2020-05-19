@@ -4,36 +4,21 @@ using socket.io;
 public class PongController : MonoBehaviour
 {
 
-    private Vector3 position;
-    private float width;
-    private float height;
-
-    void Awake()
-    {
-        width = (float)Screen.width / 2.0f;
-        height = (float)Screen.height / 2.0f;
-
-        // Position used for the cube.
-        position = new Vector3(0.0f, 0.0f, 0.0f);
-    }
+    private Vector2 pos1;
+    private bool isDown = false;
+    private Socket socket;
 
     void OnGUI()
     {
-        // Compute a fontSize based on the size of the screen width.
-        GUI.skin.label.fontSize = (int)(Screen.width / 25.0f);
 
-        GUI.Label(new Rect(20, 20, width, height * 0.25f),
-            "x = " + position.x.ToString("f2") +
-            ", y = " + position.y.ToString("f2"));
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+
         void Start()
         {
             var serverUrl = "http://localhost:4990";
-            var socket = Socket.Connect(serverUrl);
+            socket = Socket.Connect(serverUrl);
 
             socket.On(SystemEvents.connect, () => {
                 Debug.Log("Hello, Socket.io~");
@@ -49,7 +34,7 @@ public class PongController : MonoBehaviour
         }
 
 
-    }
+ 
 
     // Update is called once per frame
     void Update()
@@ -63,30 +48,26 @@ public class PongController : MonoBehaviour
             if (touch.phase == TouchPhase.Moved)
             {
                 Vector2 pos = touch.position;
-                pos.x = (pos.x - width) / width;
-                pos.y = (pos.y - height) / height;
-                position = new Vector3(-pos.x, pos.y, 0.0f);
 
-                // Position the cube.
-                transform.position = position;
-            }
-
-            if (Input.touchCount == 2)
-            {
-                touch = Input.GetTouch(1);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-                    // Halve the size of the cube.
-                    transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-                }
-
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    // Restore the regular size of the cube.
-                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                }
+                Debug.Log(pos);
+                return;
             }
         }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            pos1 = Input.mousePosition;
+            isDown = true;
+
+            //Debug.Log(Input.mousePosition);
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            isDown = false;
+        }
+        if (isDown) {
+            Debug.Log(Input.mousePosition.y - pos1.y); // Change in Y coordinate to be send over socket
+            socket.Emit("move", "{ y: " + (Input.mousePosition.y - pos1.y) + "}");
+        }
+        
     }
 }
