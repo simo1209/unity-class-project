@@ -10,12 +10,14 @@ public class HeadsUp : MonoBehaviour
 {
     public Camera cam;
     public Text word;
-    public Text timer;
+    public Text timer;   
     public Image GuessImage;
     private int score;
     private Gyroscope gyro;
     private bool loadWord = false;
     private int index = -1;
+
+    private string link = "http://localhost:5000/game_images/";
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +46,9 @@ public class HeadsUp : MonoBehaviour
         StartCoroutine(Timer(59));
         enabled = true;
         loadWord = true;
-        LoadWord();
-        StartCoroutine(setImage("https://picsum.photos/200"));
-
+        string wrd = LoadWord();
+        StartCoroutine(setImage(link+wrd+".jpg"));
+    
     }
 
     IEnumerator Timer(int seconds)
@@ -73,11 +75,11 @@ public class HeadsUp : MonoBehaviour
         timer.text = "";
     }
 
-    void LoadWord()
+    string LoadWord()
     {
         // do something...
 
-        string[] words = { "dog", "cat", "pikachu", "WoW", "Unity"};
+        string[] words = { "dog", "cat", "pikachu"};
         if(index == -1)
         {
             index = Random.Range(0, words.Length - 1);
@@ -93,6 +95,7 @@ public class HeadsUp : MonoBehaviour
         }
         string w = words[index];
         word.text = w;
+        return w;
     }
 
     IEnumerator setImage(string url)
@@ -109,8 +112,10 @@ public class HeadsUp : MonoBehaviour
         yield return new WaitForSeconds(1f);
         cam.backgroundColor = Color.white;
         loadWord = true;
-        LoadWord();
-        StartCoroutine(setImage("https://picsum.photos/200"));
+        string word = LoadWord();
+        StartCoroutine(setImage(link + word + ".jpg"));
+
+        
     }
 
     // Update is called once per frame
